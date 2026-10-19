@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific
+# Local copies of Inside Airbnb files (the real data lives in a UC volume)
+data/
+# Local Spark / Hive artifacts
+spark-warehouse/
+metastore_db/
+derby.log
+# Databricks Asset Bundles local state
+.databricks/

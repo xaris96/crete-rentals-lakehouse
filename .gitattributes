@@ -1,0 +1,2 @@
+# Store and check out text files with LF, so Windows and CI see the same bytes
+* text=auto eol=lf
