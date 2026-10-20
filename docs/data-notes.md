@@ -17,8 +17,11 @@ What I learn about the Inside Airbnb Crete data while exploring it.
 
 ## Snapshot dates used
 
-TODO
+- 2026-09-25
 
 ## Known data issues
 
-TODO
+- `listings.csv.gz` has free-text fields (e.g. `host_about`, `description`) with line breaks
+  and doubled quotes inside them. Read with `multiLine=True` and `escape='"'`, otherwise
+  Spark splits them into fake rows (52,956 rows instead of 27,381 for 2026-09-25).
+- `description` contains HTML tags such as `<b>` and `<br />`.
