@@ -18,3 +18,24 @@ ruff check .
 ruff format --check .
 pytest
 ```
+
+## Loading a snapshot
+
+Free Edition compute has no access to insideairbnb.com, so snapshots are downloaded on a local
+machine and uploaded to the `crete_rentals.raw.landing` volume with the Databricks SDK.
+
+One-time setup: install the [Databricks CLI](https://docs.databricks.com/aws/en/dev-tools/cli/install)
+and log in to the workspace (opens a browser):
+
+```powershell
+winget install Databricks.DatabricksCLI
+databricks auth login --host https://<your-workspace>.cloud.databricks.com --profile DEFAULT
+```
+
+Then, for each snapshot:
+
+```powershell
+python -m crete_rentals.ingest 2026-09-25
+```
+
+Files already downloaded are skipped; files in the volume are overwritten, so the command is safe to re-run.
