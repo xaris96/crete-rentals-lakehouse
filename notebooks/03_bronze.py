@@ -20,7 +20,7 @@ from crete_rentals.bronze import load_snapshot
 # COMMAND ----------
 
 dbutils.widgets.text("snapshot_date", "2026-09-25")
-snapshot_date = dbutils.widgets.get("snapshot_date")
+snapshot_date = dbutils.widgets.get("snapshot_date").strip()
 
 # COMMAND ----------
 
