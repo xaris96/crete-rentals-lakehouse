@@ -17,7 +17,23 @@ What I learn about the Inside Airbnb Crete data while exploring it.
 
 ## Snapshot dates used
 
+- 2026-06-29
+- 2026-07-24
 - 2026-09-25
+
+The download page lists only the latest snapshot, but older ones are still served at the same
+URL pattern (`https://data.insideairbnb.com/greece/crete/crete/<date>/data/<file>`).
+
+## Rows per snapshot in bronze
+
+| Snapshot | listings | calendar | reviews |
+|---|---|---|---|
+| 2026-06-29 | 27,333 | 9,976,554 | 612,719 |
+| 2026-07-24 | 27,513 | 10,042,248 | 627,820 |
+| 2026-09-25 | 27,381 | 9,994,065 | 672,725 |
+
+- In 2026-09-25 calendar is exactly listings × 365. The two older snapshots have a few extra
+  rows (9 and 3), so some listing has more than 365 days or a duplicate day. To check in silver.
 
 ## Snapshot 2026-09-25 at a glance
 

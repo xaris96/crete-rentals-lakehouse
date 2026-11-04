@@ -39,3 +39,16 @@ python -m crete_rentals.ingest 2026-09-25
 ```
 
 Files already downloaded are skipped; files in the volume are overwritten, so the command is safe to re-run.
+
+## Bronze
+
+`notebooks/03_bronze` reads one snapshot from the landing volume and writes it to the
+`crete_rentals.bronze` Delta tables (`listings`, `calendar`, `reviews`), adding `snapshot_date`
+and `ingested_at` to every row. Set the `snapshot_date` widget and run all cells.
+
+Re-running a snapshot replaces its rows (`replaceWhere` on `snapshot_date`) instead of appending
+a second copy, and leaves the other snapshots untouched.
+
+Reading from Delta instead of the raw CSV pays off quickly: counting the ~10M calendar rows and
+their distinct listings took about 29 s on `calendar.csv.gz` and about 2 s on the bronze table,
+on the same serverless compute.
